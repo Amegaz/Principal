@@ -1,5 +1,6 @@
-sentence = '(if2133'
-i = 0
+file = open("sentences.txt")
+otro = file.read()
+sentences = otro.split('\n')
 
 def valLexico(letter, state):
     if state == 'Inicial':
@@ -33,7 +34,7 @@ def valLexico(letter, state):
     elif state == 'void':
         state = valCero(letter)
     elif state == 'OpSuma' or state == 'OpMul' or state == 'OpOr' or state == 'OpAnd' or state == 'if':
-        state = valCero(letter)
+        state = 'Cadena'
     elif state == state == ';' or state == ',' or state == '(' or state == ')' or state == '{' or state == '}':
         state = 'Cadena'
     elif state == 'OpRelac':
@@ -236,8 +237,10 @@ def valOne(letter):
 def valCero(letter):
     if letter.isalpha() or letter.isdigit():
         return 'Identificador'
-    else:
+    elif letter == '+' or letter == '-' or letter == '*' or letter == '/' or letter == ';' or letter == ',' or letter == '.' or letter == '(' or letter == ')' or letter == '{' or letter == '}' or letter == '<' or letter == '>' or letter == '=' or letter == '!':
         return 'Cadena'
+    else:
+        return 'No reconocido'
 
 def valMinus(letter):
     if letter == 'i':
@@ -293,7 +296,7 @@ def valMinus(letter):
     elif letter == '$':
         return '$'
     else:
-        return 'Falta definirlo'
+        return 'No reconocido'
 
 def valChar(letter, state):
     if letter.isalpha():
@@ -306,10 +309,13 @@ def valChar(letter, state):
     elif letter == '.':
         return 'Real'
 
-typeDate = 'Inicial'
-while i < len(sentence):
-    typeDate = valLexico(sentence[i], typeDate)
-    #typeDate = valChar(sentence[i], typeDate)
-    print(sentence[i], typeDate)
-    i+=1
-print(typeDate)
+for sentence in sentences:
+    i = 0
+    typeDate = 'Inicial'
+    while i < len(sentence):
+        typeDate = valLexico(sentence[i], typeDate)
+        #typeDate = valChar(sentence[i], typeDate)
+        print(sentence[i], typeDate)
+        i+=1
+    print(typeDate + "\n")
+file.close()

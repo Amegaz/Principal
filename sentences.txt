@@ -1,4 +1,4 @@
-_AaAaaa
+int _AaAaaa = 5 ;
 _a6he4j5
 _65ljh
 dgsh

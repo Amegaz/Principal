@@ -297,12 +297,28 @@ def valMinus(letter):
         return 'Error'
 
 for sentence in sentences:
-    i = 0
-    typeDate = 'Inicial'
-    while i < len(sentence):
-        typeDate = valLexico(sentence[i], typeDate)
-        i+=1
-    if '-' in typeDate:
-        typeDate = 'Identificador'
-    print(sentence + "\t" + typeDate)
+    flag = False
+    if '"' in sentence:
+        srr = ''
+        for n in sentence:
+            if n == '"' and flag:
+                flag = False
+            if n == '"':
+                flag = True
+            if n == ' ' and flag:
+                n = '\n'
+            srr += n
+        sentence = srr
+    words = sentence.split(' ')
+    for word in words:
+        if '\n' in word:
+            word = word.replace("\n"," ")
+        i = 0
+        typeDate = 'Inicial'
+        while i < len(word):
+            typeDate = valLexico(word[i], typeDate)
+            i+=1
+        if '-' in typeDate:
+            typeDate = 'Identificador'
+        print(word + "\t\t\t" + typeDate)
 file.close()

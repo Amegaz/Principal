@@ -21,56 +21,56 @@ def valLexico(letter, state):
         return valNine(letter)
     elif state == '=' or state == 'OpNot':
         return valEleven(letter)
-    elif state == 'i':
+    elif state == '-i':
         return valI(letter)
-    elif state == 'w':
+    elif state == '-w':
         return valW(letter)
-    elif state == 'wh':
+    elif state == '-wh':
         return valWh(letter)
-    elif state == 'whe':
-        return valWhe(letter)
-    elif state == 'wher':
-        return valWher(letter)
-    elif state == 'r':
+    elif state == '-whi':
+        return valWhi(letter)
+    elif state == '-whil':
+        return valWhil(letter)
+    elif state == '-r':
         return valR(letter)
-    elif state == 're':
+    elif state == '-re':
         return valRe(letter)
-    elif state == 'ret':
+    elif state == '-ret':
         return valRet(letter)
-    elif state == 'retu':
+    elif state == '-retu':
         return valRetu(letter)
-    elif state == 'retur':
+    elif state == '-retur':
         return valRetur(letter)
-    elif state == 'e':
+    elif state == '-e':
         return valE(letter)
-    elif state == 'el':
+    elif state == '-el':
         return valEl(letter)
-    elif state == 'els':
+    elif state == '-els':
         return valEls(letter)
-    elif state == 'in':
+    elif state == '-in':
         return valIn(letter)
-    elif state == 'f':
+    elif state == '-f':
         return valF(letter)
-    elif state == 'fl':
+    elif state == '-fl':
         return valFl(letter)
-    elif state == 'flo':
+    elif state == '-flo':
         return valFlo(letter)
-    elif state == 'floa':
+    elif state == '-floa':
         return valFloa(letter)
-    elif state == 'v':
+    elif state == '-v':
         return valV(letter)
-    elif state == 'vo':
+    elif state == '-vo':
         return valVo(letter)
-    elif state == 'voi':
+    elif state == '-voi':
         return valVoi(letter)
     else:
         return 'Invalido'
 
 def valI(letter):
     if letter == 'f':
-        return 'if'
+        return '-if'
     elif letter == 'n':
-        return 'in'
+        return '-in'
     else:
         return valZero(letter)
 
@@ -82,19 +82,19 @@ def valIn(letter):
 
 def valF(letter):
     if letter == 'l':
-        return 'fl'
+        return '-fl'
     else:
         return valZero(letter)
 
 def valFl(letter):
     if letter == 'o':
-        return 'flo'
+        return '-flo'
     else:
         return valZero(letter)
 
 def valFlo(letter):
     if letter == 'a':
-        return 'floa'
+        return '-floa'
     else:
         return valZero(letter)
 
@@ -106,13 +106,13 @@ def valFloa(letter):
 
 def valV(letter):
     if letter == 'o':
-        return 'vo'
+        return '-vo'
     else:
         return valZero(letter)
 
 def valVo(letter):
     if letter == 'i':
-        return 'voi'
+        return '-voi'
     else:
         return valZero(letter)
 
@@ -124,49 +124,49 @@ def valVoi(letter):
 
 def valW(letter):
     if letter == 'h':
-        return 'wh'
+        return '-wh'
     else:
         return valZero(letter)
 
 def valWh(letter):
-    if letter == 'e':
-        return 'whe'
+    if letter == 'i':
+        return '-whi'
     else:
         return valZero(letter)
 
-def valWhe(letter):
-    if letter == 'r':
-        return 'wher'
+def valWhi(letter):
+    if letter == 'l':
+        return '-whil'
     else:
         return valZero(letter)
     
-def valWher(letter):
+def valWhil(letter):
     if letter == 'e':
-        return 'where'
+        return 'while'
     else:
         return valZero(letter)
 
 def valR(letter):
     if letter == 'e':
-        return 're'
+        return '-re'
     else:
         return valZero(letter)
 
 def valRe(letter):
     if letter == 't':
-        return 'ret'
+        return '-ret'
     else:
         return valZero(letter)
 
 def valRet(letter):
     if letter == 'u':
-        return 'retu'
+        return '-retu'
     else:
         return valZero(letter)
 
 def valRetu(letter):
     if letter == 'r':
-        return 'retur'
+        return '-retur'
     else:
         return valZero(letter)
 
@@ -178,13 +178,13 @@ def valRetur(letter):
 
 def valE(letter):
     if letter == 'l':
-        return 'el'
+        return '-el'
     else:
         return valZero(letter)
 
 def valEl(letter):
     if letter == 's':
-        return 'els'
+        return '-els'
     else:
         return valZero(letter)
 
@@ -246,17 +246,17 @@ def valEleven(letter):
     
 def valMinus(letter):
     if letter == 'i':
-        return 'i'
+        return '-i'
     if letter == 'w':
-        return 'w'
+        return '-w'
     if letter == 'r':
-        return 'r'
+        return '-r'
     if letter == 'e':
-        return 'e'
+        return '-e'
     if letter == 'f':
-        return 'f'
+        return '-f'
     if letter == 'v':
-        return 'v'
+        return '-v'
     elif letter.isalpha() or letter == '_':
         return 'Identificador'
     elif letter.isdigit():
@@ -301,8 +301,8 @@ for sentence in sentences:
     typeDate = 'Inicial'
     while i < len(sentence):
         typeDate = valLexico(sentence[i], typeDate)
-        #if 'Invalido' in typeDate:
-        #    print('Invalido')
         i+=1
+    if '-' in typeDate:
+        typeDate = 'Identificador'
     print(sentence + "\t" + typeDate)
 file.close()

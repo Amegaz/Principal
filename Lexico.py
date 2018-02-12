@@ -294,10 +294,11 @@ def valMinus(letter):
     elif letter == '$':
         return '$'
     else:
-        return 'Error'
+        return 'Invalido'
 
 for sentence in sentences:
     flag = False
+    typeSentence = 'Valido'
     if '"' in sentence:
         srr = ''
         for n in sentence:
@@ -313,6 +314,7 @@ for sentence in sentences:
     for word in words:
         if '\n' in word:
             word = word.replace("\n"," ")
+            sentence = ''
         i = 0
         typeDate = 'Inicial'
         while i < len(word):
@@ -320,5 +322,9 @@ for sentence in sentences:
             i+=1
         if '-' in typeDate:
             typeDate = 'Identificador'
+        if typeDate == 'Invalido':
+            typeSentence = 'Invalido'
         print(word + "\t\t\t" + typeDate)
+        sentence += word
+    #print(sentence + "\t" + typeSentence)
 file.close()

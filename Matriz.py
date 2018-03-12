@@ -1,16 +1,13 @@
-file = open("compilador.txt")
-s = [""] * 95
-s = [s] * 46
-#s = [[for j in range(95)] for i in range(46)]
+file = open("compilador.lr")
 fil = file.read()
 fi = fil.split("\n")
-x = 0
-for i in fi:
-    y = 0;
-    f = i.split(",")
-    for j in f:
-        s[y][x] = j
-        print(s[y][x] + ",",end="")
-        y = y + 1
-    print("\n")
-    x = x + 1
+print(fi[0])
+for i in range(int(fi[0])):
+    print(fi[i+1])
+print(fi[int(fi[0])+1])
+size = fi[int(fi[0])+1].split("\t")
+s = [0] * int(size[0])
+s = [s] * int(size[1])
+for i in range(int(fi[0])+2,int(size[0])+int(fi[0])+2):
+    s[0] = fi[i].split("\t")
+    print(s[0])

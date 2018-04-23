@@ -1,6 +1,13 @@
-ab + cd
-ac ab +
-cd + +
-+ + cv
-ab + bf + abe
-ab + bf + abe + bhgh
+int
+ima
+ina
+inta
+float
+floau
+flou
+flu
+fu
+void
+voiu
+vou
+vu

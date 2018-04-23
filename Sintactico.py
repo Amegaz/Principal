@@ -1,67 +1,20 @@
 class Sintactico:
-    t = [[0,0,0,0,0] for i in range(5)]
-    s = [[0,0,0,0,0] for i in range(5)]    
+    w = [0]
     
     def __init__(self):
-        self.s[0][0] = 2
-        self.s[0][1] = 0
-        self.s[0][2] = 0
-        self.s[0][3] = 1
-
-        self.s[1][0] = 0
-        self.s[1][1] = 0
-        self.s[1][2] = -1
-        self.s[1][3] = 0
-
-        self.s[2][0] = 0
-        self.s[2][1] = 3
-        self.s[2][2] = 0
-        self.s[2][3] = 0
-
-        self.s[3][0] = 4
-        self.s[3][1] = 0
-        self.s[3][2] = 0
-        self.s[3][3] = 0
-
-        self.s[4][0] = 0
-        self.s[4][1] = 0
-        self.s[4][2] = -2
-        self.s[4][3] = 0
-
-        self.t[0][0] = 2
-        self.t[0][1] = 0
-        self.t[0][2] = 0
-        self.t[0][3] = 1
-
-        self.t[1][0] = 0
-        self.t[1][1] = 0
-        self.t[1][2] = -1
-        self.t[1][3] = 0
-
-        self.t[2][0] = 0
-        self.t[2][1] = 3
-        self.t[2][2] = -3
-        self.t[2][3] = 0
-
-        self.t[3][0] = 2
-        self.t[3][1] = 0
-        self.t[3][2] = 0
-        self.t[3][3] = 4
-
-        self.t[4][0] = 0
-        self.t[4][1] = 0
-        self.t[4][2] = -2
-        self.t[4][3] = 0        
-
-    def asig(self,x):
-        if x < 3:
-            return 0
-        elif x == 5:
-            return 1
-        elif x == 23:
-            return 2
-        else:
-            return 3
+        fi = open("compilador.lr").read().split("\n")
+        #print(fi[0])
+        #for i in range(int(fi[0])):
+        #    print(fi[i+1])
+        #print(fi[int(fi[0])+1])
+        size = fi[int(fi[0])+1].split("\t")
+        self.w = [0] * int(size[1])
+        self.w = [self.w] * int(size[0])
+        j = 0
+        for i in range(int(fi[0])+2,int(size[0])+int(fi[0])+2):
+            self.w[j] = fi[i].split("\t")
+            #print(self.w[j])
+            j+=1
 
     def re(self,leer,stack):
         print("Entrada: ",leer)
@@ -92,3 +45,14 @@ class Sintactico:
             print("Aceptado")
         else:
             print("Error al validar")
+
+    def sintact(self,leer,stack):
+        print("Entrada: ",leer)
+        estado = int(self.w[stack.top()][leer])
+        print("Salida: ",estado)
+        stack.push(leer)
+        stack.push(estado)
+        if estado == 0:
+            print("Error al validar")
+        elif estado < 0:
+            print("Aceptado")

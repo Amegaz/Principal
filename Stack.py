@@ -14,3 +14,6 @@ class Stack:
     def top(self):
         self.value = int(self.items[-1])
         return (self.value)
+
+    def clear(self):
+        self.items = []

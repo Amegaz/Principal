@@ -1,6 +1,4 @@
-file = open("compilador.lr")
-fil = file.read()
-fi = fil.split("\n")
+fi = open("compilador.lr").read().split("\n")
 print(fi[0])
 for i in range(int(fi[0])):
     print(fi[i+1])

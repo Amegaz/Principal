@@ -52,7 +52,15 @@ class Sintactico:
         print("Salida: ",estado)
         stack.push(leer)
         stack.push(estado)
-        if estado == 0:
+        if estado > 0:
             print("Error al validar")
-        elif estado < 0:
+        elif estado < -1:
+            #reduction()
+            if estado == -8:
+                stack.clear()
+                stack.push(23)
+                stack.push(0)
+                stack.push(27)
+                stack.push(7)
+        else:
             print("Aceptado")

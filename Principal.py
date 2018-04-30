@@ -42,14 +42,18 @@ def compilador():
                 i+=1
             print("\t" + tipo.printType(typeDate))
             cadena.push(typeDate)
-        cadena.push(24)
-        print("Cadena:" + str(cadena.items))
-        stack.push(24)
+        cadena.push(23)
+        #print("Cadena:" + str(cadena.items))
+        stack.push(23)
         stack.push(0)
+        #print("Stack:" + str(stack.items))
+        for leer in cadena.items:
+            print("Cadena:" + str(cadena.items))
+            print("Stack:" + str(stack.items))
+            sintactico.sintact(leer,stack)
+        print("Cadena:" + str(cadena.items))
         print("Stack:" + str(stack.items))
-        #for leer in cadena.items:
-            #sintactico.sintact(leer,stack)
         stack.clear()
         cadena.clear()
-
+        
 compilador()

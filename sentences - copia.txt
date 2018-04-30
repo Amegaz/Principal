@@ -1,6 +1,1 @@
-
-int hola;
-float sal, azucar ,pimienta;
-int fun ()
-int fun ( ) iden ;
-int fun ( int iden , int iden )
+int fun ( ) { }

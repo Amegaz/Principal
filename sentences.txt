@@ -1,13 +1,1 @@
-int
-ima
-ina
-inta
-float
-floau
-flou
-flu
-fu
-void
-voiu
-vou
-vu
+int nombre;
